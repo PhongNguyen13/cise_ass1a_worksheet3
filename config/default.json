@@ -1,0 +1,4 @@
+{
+    "mongoURI":
+    "mongodb+srv://dbTest:dbtestpass@clusterdemo.uxwz1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
