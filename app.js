@@ -22,7 +22,7 @@ app.use(express.json({ extended: false }));
 // use Routes
 app.use('/api/books', books);
 
-if(process.env.NODE_ENV === "production"){
+/*if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, '/my-app/build')));
 
     app.get('*', (req,res) => {
@@ -32,19 +32,14 @@ if(process.env.NODE_ENV === "production"){
     app.get('/', (req,res) => {
         res.send('API Running');
     });
-}
-
-/*if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('my-app/build'));
 }*/
 
-const port = process.env.PORT || 5000;
-/*
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./my-app/build")));
 // Step 2:
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./my-app/build", "index.html"));
-});*/
+});
 
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
