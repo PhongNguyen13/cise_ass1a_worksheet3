@@ -3,7 +3,7 @@ const connectDB = require('./config/db');
 var cors = require('cors');
 // Accessing the path module
 const path = require("path");
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 // routes
@@ -14,7 +14,7 @@ const app = express();
 
 // Connect Database
 require("dotenv").config()
-//connectDB();
+connectDB();
 
 // cors
 app.use(cors({ origin: true, credentials: true }));
@@ -22,7 +22,7 @@ app.use(cors({ origin: true, credentials: true }));
 //import your models
 require("./models/quote");
 
-mongoose
+/*mongoose
     .connectDB(
         process.env.MONGODB_CONNECTION_STRING, 
             {
@@ -31,15 +31,14 @@ mongoose
             }
     )
     .then(() => console.log("MongoDB has been connected"))
-    .catch((err) => console.log(err));
-
+    .catch((err) => console.log(err));*/
 
 // Init Middleware
 app.use(express.json({ extended: false }));
 
 //middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Hello world!'));
 
