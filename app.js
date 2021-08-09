@@ -1,26 +1,50 @@
-require("dotenv").config({path: "./config.env"});
+//require("dotenv").config({path: "./config.env"});
 const path = require('path');
 const express = require('express');
 const connectDB = require('./config/db');
 var cors = require('cors');
+const bodyParser = require("body-parser");
 
 // routes
 const books = require('./routes/api/books');
+const { Mongoose } = require("mongoose");
 const app = express();
 
-// Connect Database
-connectDB();
-
 // cors
-app.use(cors({ origin: true, credentials: true })); 
+app.use(cors({ origin: true, credentials: true }));
+
+//import your models
+require("./models/book");
+
+// Connect Database
+//connectDB();
+require("dotenv").config()
+
+Mongoose
+    .connectDB(
+        "mongodb+srv://dbtest:dbtestpass@herokutest.7dl4r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
+    )
+    .then(() => console.log("MongoDB has been connected"))
+    .catch((err) => console.log(err)); 
 
 // Init Middleware
 app.use(express.json({ extended: false }));
 
+//middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//import routes
+require("./routes/api/books")(app);
+
 //app.get('/', (req, res) => res.send('Hello world!'));
 
 // use Routes
-app.use('/api/books', books);
+//app.use('/api/books', books);
 
 /*if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, '/my-app/build')));

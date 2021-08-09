@@ -4,9 +4,12 @@
   "description": "mern app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "build": "cd my-app && npm run build",
+    "install-my-app": "cd my-app && npm install",
+    "heroku-postbuild": "npm run install-my-app && npm run build",
     "app": "nodemon app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix my-app && npm run build --prefix my-app",
+    "develop": "concurrently --kill-others-on-fail \"npm run app\" \"npm run start --prefix my-app\"",
+    "start": "concurrently --kill-others-on-fail \"npm run app\" \"npm run start --prefix my-app\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
