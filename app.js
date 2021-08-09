@@ -1,8 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
 var cors = require('cors');
-// Accessing the path module
-const path = require("path");
 //const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
