@@ -12,10 +12,7 @@ const app = express();
 connectDB();
 
 // cors
-app.use(cors({ origin: true, credentials: true }));
-
-//import your models
-//require("./models/quote");
+app.use(cors({ origin: true, credentials: true })); 
 
 // Init Middleware
 app.use(express.json({ extended: false }));
@@ -25,21 +22,21 @@ app.use(express.json({ extended: false }));
 // use Routes
 app.use('/api/books', books);
 
-/*if(process.env.NODE_ENV === "production"){
+if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, '/my-app/build')));
 
     app.get('*', (req,res) => {
-        res.sendFile(path.join(__dirname, 'my-app', 'build', 'index.html'))
-    });
+        res.sendFile(path.join(__dirname, 'my-app', 'build', 'index.html'));
+    })
 } else {
     app.get('/', (req,res) => {
         res.send('API Running');
     });
-}*/
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('my-app/build'));
 }
+
+/*if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('my-app/build'));
+}*/
 
 const PORT = process.env.PORT || 5000;
 /*

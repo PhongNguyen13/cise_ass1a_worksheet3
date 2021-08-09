@@ -4,13 +4,10 @@
   "description": "mern app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd my-app && npm run build",
-    "install-app": "cd my-app && npm install",
-    "heroku-postbuild": "npm run install-app && npm run build",
     "start": "node app.js",
-    "app": "cd my-app && npm start",
-    "dev": "concurrently -n 'app,my-app' -c \"nodemon app.js\" \"npm run my-app\""
+    "app": "nodemon app.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix my-app && npm run build --prefix my-app",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
