@@ -38,7 +38,7 @@ if(process.env.NODE_ENV === "production"){
     app.use(express.static('my-app/build'));
 }*/
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 /*
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./my-app/build")));
@@ -47,4 +47,4 @@ app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./my-app/build", "index.html"));
 });*/
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
