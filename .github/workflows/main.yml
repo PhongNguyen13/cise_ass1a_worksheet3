@@ -15,5 +15,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "cise-heroku-app" #Must be unique in Heroku
           heroku_email: "qtc0531@autuni.ac.nz"
-          appdir: "cise_ass1a_worksheet3" # <- This will point to the api folder in your project
           procfile: "web: npm start"
