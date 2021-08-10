@@ -46,17 +46,9 @@ require("./routes/api/books")(app);
 // use Routes
 //app.use('/api/books', books);
 
-/*if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname, '/my-app/build')));
-
-    app.get('*', (req,res) => {
-        res.sendFile(path.join(__dirname, 'my-app', 'build', 'index.html'));
-    })
-} else {
-    app.get('/', (req,res) => {
-        res.send('API Running');
-    });
-}*/
+app.get("/", (req,res) => {
+    res.sendFile(path.join(__dirname, "build"));
+});
 
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./my-app/build")));
